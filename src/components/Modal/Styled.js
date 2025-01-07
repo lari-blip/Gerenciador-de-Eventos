@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// Sobreposição do Modal
 export const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -14,7 +13,6 @@ export const ModalOverlay = styled.div`
   z-index: 1000;
 `;
 
-// Container do Modal
 export const ModalContainer = styled.div`
   width: 400px;
   background-color: #ffffff;
@@ -23,10 +21,9 @@ export const ModalContainer = styled.div`
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 15px;  /* Adicionado espaçamento entre os itens do modal */
+  gap: 15px; 
 `;
 
-// Conteúdo do Modal
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -34,7 +31,7 @@ export const ModalContent = styled.div`
   h2 {
     font-size: 24px;
     font-weight: bold;
-    color: #7f56d9;  // Cor de destaque
+    color: #7f56d9;  
     margin-bottom: 20px;
   }
 
@@ -45,7 +42,6 @@ export const ModalContent = styled.div`
   }
 `;
 
-// Estilo dos campos de entrada
 export const Input = styled.input`
   width: 100%;
   padding: 12px;
@@ -56,11 +52,10 @@ export const Input = styled.input`
   outline: none;
 
   &:focus {
-    border-color: #7f56d9;  // Cor de foco
+    border-color: #7f56d9;  
   }
 `;
 
-// Estilo do Select (para Estado e Cidade)
 export const Select = styled.select`
   width: 100%;
   padding: 12px;
@@ -71,11 +66,10 @@ export const Select = styled.select`
   outline: none;
 
   &:focus {
-    border-color: #7f56d9;  // Cor de foco
+    border-color: #7f56d9;  
   }
 `;
 
-// Estilo do label
 export const Label = styled.label`
   font-size: 14px;
   font-weight: 500;
@@ -83,7 +77,6 @@ export const Label = styled.label`
   margin-bottom: 8px;
 `;
 
-// Estilo dos botões
 export const Button = styled.button`
   padding: 12px 20px;
   font-size: 16px;

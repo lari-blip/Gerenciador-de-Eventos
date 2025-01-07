@@ -1,4 +1,4 @@
-// src/pages/Login/Login.jsx
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -21,7 +21,7 @@ const Login = ({ onLogin }) => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [gravarSenha, setGravarSenha] = useState(false);
-  const navigate = useNavigate();  // Para redirecionar após o login
+  const navigate = useNavigate();  
 
   useEffect(() => {
     const savedEmail = localStorage.getItem('email');
@@ -47,8 +47,8 @@ const Login = ({ onLogin }) => {
           localStorage.setItem('email', email);
           localStorage.setItem('senha', senha);
         }
-        onLogin();  // Chama a função onLogin passada via props para atualizar o estado em App.js
-        navigate('/home');  // Redireciona para a Home após o login
+        onLogin();  
+        navigate('/home');  
       } else {
         setErrorMessage('Credenciais inválidas. Tente novamente.');
       }
@@ -56,7 +56,7 @@ const Login = ({ onLogin }) => {
   };
 
   const handleRegister = () => {
-    navigate('/cadastro');  // Redireciona para a página de cadastro
+    navigate('/cadastro');  
   };
 
   return (

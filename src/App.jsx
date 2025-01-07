@@ -8,12 +8,11 @@ import './App.css';
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Função chamada ao fazer login com sucesso
+  
   const handleLogin = () => {
     setIsAuthenticated(true);
   };
 
-  // Função chamada ao fazer logout
   const handleLogout = () => {
     setIsAuthenticated(false);
   };
@@ -22,25 +21,24 @@ const App = () => {
     <Router>
       <div className="App">
         <Routes>
-          {/* Se o usuário estiver autenticado, redireciona para Home, senão para Login */}
+         
           <Route
             path="/"
             element={isAuthenticated ? <Navigate to="/home" /> : <Login onLogin={handleLogin} />}
           />
 
-          {/* Rota de Login - Redireciona se estiver autenticado */}
+         
           <Route
             path="/login"
             element={isAuthenticated ? <Navigate to="/home" /> : <Login onLogin={handleLogin} />}
           />
 
-          {/* Rota de Cadastro - Redireciona se estiver autenticado */}
+         
           <Route
             path="/cadastro"
             element={isAuthenticated ? <Navigate to="/home" /> : <Signup onCadastro={handleLogin} />}
           />
 
-          {/* Rota da Home - Acessível apenas se estiver autenticado */}
           <Route
             path="/home"
             element={isAuthenticated ? <Home onLogout={handleLogout} /> : <Navigate to="/login" />}

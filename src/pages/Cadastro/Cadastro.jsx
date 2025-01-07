@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';  // Importa o hook useNavigate
+import { useNavigate } from 'react-router-dom';  
 import {
   Container,
   FormWrapper,
@@ -19,7 +19,6 @@ const Cadastro = () => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  // Hook para navegação
   const navigate = useNavigate();
 
   const handleSignup = () => {
@@ -34,9 +33,8 @@ const Cadastro = () => {
     setErrorMessage('');
     setLoading(true);
     setTimeout(() => {
-      // Supondo que o cadastro seja realizado com sucesso
       setLoading(false);
-      navigate('/login');  // Redireciona para a tela de login
+      navigate('/login');  
     }, 1500);
   };
 

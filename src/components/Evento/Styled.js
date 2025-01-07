@@ -63,7 +63,6 @@ export const EventCardContainer = styled.div`
   }
 `;
 
-// Exemplo de definição de estilo do botão
 export const Button = styled.button`
   padding: 10px 20px;
   font-size: 14px;

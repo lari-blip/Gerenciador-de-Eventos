@@ -1,31 +1,29 @@
-// src/pages/HomePage/HomePage.jsx
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Importando o hook useNavigate do React Router
+import { useNavigate } from 'react-router-dom'; 
 import { Container, Header, Button, HeroSection, Description, Features } from './Styled';
 
 const HomePage = () => {
-  const navigate = useNavigate(); // Usando o hook useNavigate para navegação
+  const navigate = useNavigate(); 
 
-  // Funções para navegação
   const handleLoginClick = () => {
-    navigate('/login'); // Navega para a página de Login
+    navigate('/login');
   };
 
   const handleSignupClick = () => {
-    navigate('/signup'); // Navega para a página de Cadastro
+    navigate('/signup'); 
   };
 
   return (
     <Container>
       <Header>
         <h1>Bem-vindo ao EventHub</h1>
-        <Button primary onClick={handleLoginClick}>Entrar</Button> {/* Botão de Login */}
+        <Button primary onClick={handleLoginClick}>Entrar</Button> 
       </Header>
 
       <HeroSection>
         <h2>Gerencie seus eventos de forma simples e rápida</h2>
         <p>EventHub é a plataforma ideal para você criar, gerenciar e compartilhar seus eventos com facilidade.</p>
-        <Button primary onClick={handleSignupClick}>Comece Agora</Button> {/* Botão de Cadastro */}
+        <Button primary onClick={handleSignupClick}>Comece Agora</Button> 
       </HeroSection>
 
       <Description>
@@ -48,7 +46,7 @@ const HomePage = () => {
         </div>
       </Features>
 
-      <Button primary onClick={() => navigate('/events')}>Veja os Eventos</Button> {/* Botão para ver os eventos */}
+      <Button primary onClick={() => navigate('/events')}>Veja os Eventos</Button> 
     </Container>
   );
 };

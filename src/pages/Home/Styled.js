@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// Container principal da página
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -8,10 +7,9 @@ export const Container = styled.div`
   background-color: #f8f8f8;
   min-height: 100vh;
   color: #333;
-  font-family: 'Inter', sans-serif; // Fonte moderna
+  font-family: 'Inter', sans-serif; 
 `;
 
-// Cabeçalho
 export const Header = styled.header`
   display: flex;
   justify-content: space-between;
@@ -20,15 +18,13 @@ export const Header = styled.header`
   padding: 10px 0;
 `;
 
-// Título da página
 export const Title = styled.h2`
   font-size: 32px;
   font-weight: bold;
-  color: #7f56d9; // Cor solicitada
+  color: #7f56d9; 
   margin: 0;
 `;
 
-// Lista de eventos
 export const EventList = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -37,7 +33,6 @@ export const EventList = styled.div`
   transition: all 0.3s ease;
 `;
 
-// Estilo dos botões
 export const Button = styled.button`
   padding: 12px 24px;
   font-size: 16px;
@@ -58,11 +53,9 @@ export const Button = styled.button`
     transform: scale(0.98);
   }
 
-  // Adicionando margem superior para separação
   margin-top: ${(props) => (props.primary ? '20px' : '0')};
 `;
 
-// Mensagem quando não há eventos
 export const EmptyMessage = styled.p`
   font-size: 16px;
   color: #7f56d9;
@@ -75,7 +68,6 @@ export const EmptyMessage = styled.p`
   border-radius: 8px;
   border: 1px solid #7f56d9;
 
-  // Adicionando um pouco mais de espaçamento abaixo
   margin-bottom: 20px;
 `;
 

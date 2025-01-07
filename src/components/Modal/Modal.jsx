@@ -7,9 +7,8 @@ import {
   Input,
   Label,
   Select
-} from './Styled';  // Certifique-se de que o caminho está correto
+} from './Styled';  
 
-// Dados de exemplo para estados e cidades
 const estados = [
   { nome: 'São Paulo', cidades: [
       'São Paulo', 'Campinas', 'Santos', 'São Bernardo do Campo', 'São José dos Campos',
@@ -57,7 +56,7 @@ const Modal = ({ isOpen, onClose, onSave, eventData, setEventData }) => {
   const handleEstadoChange = (e) => {
     const estadoSelecionado = e.target.value;
     setSelectedEstado(estadoSelecionado);
-    setSelectedCidade('');  // Resetar cidade ao mudar o estado
+    setSelectedCidade('');  
     setEventData({ ...eventData, location: estadoSelecionado + ', ' + selectedCidade });
   };
 
