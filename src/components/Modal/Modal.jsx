@@ -6,31 +6,13 @@ import {
   Button,
   Input,
   Label,
-  Select
-} from './Styled';  
+  Select,
+} from './Styled';
 
 const estados = [
-  { nome: 'São Paulo', cidades: [
-      'São Paulo', 'Campinas', 'Santos', 'São Bernardo do Campo', 'São José dos Campos',
-      'Ribeirão Preto', 'Sorocaba', 'Bauru', 'Osasco', 'Piracicaba', 'Indaiatuba', 
-      'Araraquara', 'Limeira', 'Mogi das Cruzes', 'Carapicuíba', 'Barueri', 'Jundiaí', 
-      'Embu das Artes', 'Diadema', 'Guarulhos'
-    ]
-  },
-  { nome: 'Minas Gerais', cidades: [
-      'Belo Horizonte', 'Uberlândia', 'Juiz de Fora', 'Contagem', 'Betim', 'Montes Claros',
-      'Ipatinga', 'Sete Lagoas', 'Divinópolis', 'Teófilo Otoni', 'Patos de Minas', 
-      'Uberaba', 'Governador Valadares', 'Poços de Caldas', 'Varginha', 'Barbacena',
-      'Muriaé', 'Araguari', 'Caldas', 'Ubá'
-    ]
-  },
-  { nome: 'Rio de Janeiro', cidades: [
-      'Rio de Janeiro', 'Niterói', 'Campos dos Goytacazes', 'Duque de Caxias', 'Nova Iguaçu', 
-      'São Gonçalo', 'Volta Redonda', 'Macaé', 'Teresópolis', 'Angra dos Reis', 
-      'Petropólis', 'Cabo Frio', 'Itaperuna', 'Resende', 'Barra Mansa', 'Araruama', 
-      'Maricá', 'Rio das Ostras', 'Búzios', 'Casimiro de Abreu'
-    ]
-  }
+  { nome: 'São Paulo', cidades: ['São Paulo', 'Campinas', 'Santos'] },
+  { nome: 'Minas Gerais', cidades: ['Belo Horizonte', 'Uberlândia', 'Juiz de Fora'] },
+  { nome: 'Rio de Janeiro', cidades: ['Rio de Janeiro', 'Niterói', 'Campos dos Goytacazes'] },
 ];
 
 const Modal = ({ isOpen, onClose, onSave, eventData, setEventData }) => {
@@ -38,6 +20,7 @@ const Modal = ({ isOpen, onClose, onSave, eventData, setEventData }) => {
 
   const [selectedEstado, setSelectedEstado] = useState('');
   const [selectedCidade, setSelectedCidade] = useState('');
+  const [imageError, setImageError] = useState(''); // Armazena erros de validação da imagem
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -49,6 +32,15 @@ const Modal = ({ isOpen, onClose, onSave, eventData, setEventData }) => {
       alert('Por favor, preencha todos os campos.');
       return;
     }
+
+    // Validação da URL da imagem
+    const isValidImage = /\.(jpeg|jpg|png)$/i.test(eventData.image);
+    if (!isValidImage) {
+      setImageError('A URL da imagem deve ser válida e terminar com .jpeg , .png ou .jpg.');
+      return;
+    }
+
+    setImageError('');
     onSave();
     onClose();
   };
@@ -56,7 +48,7 @@ const Modal = ({ isOpen, onClose, onSave, eventData, setEventData }) => {
   const handleEstadoChange = (e) => {
     const estadoSelecionado = e.target.value;
     setSelectedEstado(estadoSelecionado);
-    setSelectedCidade('');  
+    setSelectedCidade('');
     setEventData({ ...eventData, location: estadoSelecionado + ', ' + selectedCidade });
   };
 
@@ -90,30 +82,26 @@ const Modal = ({ isOpen, onClose, onSave, eventData, setEventData }) => {
           />
 
           <Label>Estado</Label>
-          <Select
-            value={selectedEstado}
-            onChange={handleEstadoChange}
-            name="estado"
-          >
+          <Select value={selectedEstado} onChange={handleEstadoChange} name="estado">
             <option value="">Selecione o estado</option>
             {estados.map((estado, index) => (
-              <option key={index} value={estado.nome}>{estado.nome}</option>
+              <option key={index} value={estado.nome}>
+                {estado.nome}
+              </option>
             ))}
           </Select>
 
           {selectedEstado && (
             <>
               <Label>Cidade</Label>
-              <Select
-                value={selectedCidade}
-                onChange={handleCidadeChange}
-                name="cidade"
-              >
+              <Select value={selectedCidade} onChange={handleCidadeChange} name="cidade">
                 <option value="">Selecione a cidade</option>
                 {estados
                   .find((estado) => estado.nome === selectedEstado)
                   ?.cidades.map((cidade, index) => (
-                    <option key={index} value={cidade}>{cidade}</option>
+                    <option key={index} value={cidade}>
+                      {cidade}
+                    </option>
                   ))}
               </Select>
             </>
@@ -127,6 +115,7 @@ const Modal = ({ isOpen, onClose, onSave, eventData, setEventData }) => {
             onChange={handleInputChange}
             placeholder="Cole a URL da imagem"
           />
+          {imageError && <p style={{ color: 'red', fontSize: '0.9rem' }}>{imageError}</p>}
 
           <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px', marginTop: '20px' }}>
             <Button onClick={handleSave}>Salvar</Button>

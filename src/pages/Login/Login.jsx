@@ -11,6 +11,7 @@ import {
   Label,
   ImageWrapper,
   Illustration,
+  InfoWrapper,
   InfoText,
 } from './Styled';
 
@@ -93,8 +94,10 @@ const Login = ({ onLogin }) => {
         </Button>
       </FormWrapper>
       <ImageWrapper>
+        <InfoWrapper>
+          <InfoText>Acesse sua conta e aproveite o melhor conteúdo.</InfoText>
+        </InfoWrapper>
         <Illustration src="https://i.imgur.com/Sa0WeIb.png" alt="Login Illustration" />
-        <InfoText>Acesse sua conta e tenha a melhor experiência.</InfoText>
       </ImageWrapper>
     </Container>
   );

@@ -55,7 +55,7 @@ export const Button = styled.button`
   font-weight: bold;
   cursor: pointer;
   margin-bottom: ${(props) => (props.secondary ? '0' : '20px')};
-  transition: transform 0.2s ease, background-color 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.2s ease;
 
   &:disabled {
     opacity: 0.6;
@@ -71,6 +71,7 @@ export const Button = styled.button`
 export const Message = styled.p`
   color: ${(props) => (props.error ? 'red' : 'green')};
   margin-bottom: 20px;
+  font-size: 14px;
 `;
 
 export const Checkbox = styled.input`
@@ -99,7 +100,7 @@ export const ImageWrapper = styled.div`
 
 export const Illustration = styled.img`
   width: 80%;
-  margin-bottom: 20px;
+  margin: 20px 0;
   animation: float 3s infinite ease-in-out;
 
   @keyframes float {
@@ -107,12 +108,21 @@ export const Illustration = styled.img`
       transform: translateY(0);
     }
     50% {
-      transform: translateY(-10px);
+      transform: translateY(-15px);
     }
   }
+`;
+
+export const InfoWrapper = styled.div`
+  margin-bottom: 20px;
+  text-align: center;
 `;
 
 export const InfoText = styled.p`
   font-size: 18px;
   text-align: center;
+  color: #ffffff;
+  line-height: 1.5;
+  max-width: 80%;
+  margin: 0 auto;
 `;

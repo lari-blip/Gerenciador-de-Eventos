@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';  
+import { useNavigate } from 'react-router-dom';
+import { FaEnvelope, FaLock } from 'react-icons/fa';
 import {
   Container,
   FormWrapper,
+  InputWrapper,
   Input,
   Button,
   Title,
   Message,
   ImageWrapper,
   Illustration,
-  InfoText
+  InfoText,
+  Icon,
 } from './Styled';
 
 const Cadastro = () => {
@@ -34,7 +37,7 @@ const Cadastro = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      navigate('/login');  
+      navigate('/login');
     }, 1500);
   };
 
@@ -42,24 +45,39 @@ const Cadastro = () => {
     <Container>
       <FormWrapper>
         <Title>Crie sua conta</Title>
-        <Input
-          type="email"
-          placeholder="E-mail"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <Input
-          type="password"
-          placeholder="Senha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-        />
-        <Input
-          type="password"
-          placeholder="Confirmar Senha"
-          value={confirmSenha}
-          onChange={(e) => setConfirmSenha(e.target.value)}
-        />
+        <InputWrapper>
+          <Icon>
+            <FaEnvelope />
+          </Icon>
+          <Input
+            type="email"
+            placeholder="E-mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <Icon>
+            <FaLock />
+          </Icon>
+          <Input
+            type="password"
+            placeholder="Senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <Icon>
+            <FaLock />
+          </Icon>
+          <Input
+            type="password"
+            placeholder="Confirmar Senha"
+            value={confirmSenha}
+            onChange={(e) => setConfirmSenha(e.target.value)}
+          />
+        </InputWrapper>
         {errorMessage && <Message>{errorMessage}</Message>}
         <Button onClick={handleSignup} disabled={loading}>
           {loading ? 'Cadastrando...' : 'Cadastrar'}
