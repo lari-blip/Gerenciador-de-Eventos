@@ -7,11 +7,10 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f4f4f9;
+  background-color: #f7f7f7;  /* Use uma única declaração de background */
   color: #333;
   line-height: 1.6;
-  height: 100vh;
-  display: flex;
+  min-height: 100vh;  /* Alterado para min-height, garantindo que ocupe a altura da tela */
   justify-content: center;
   align-items: center;
 }
@@ -32,11 +31,4 @@ a {
   text-decoration: none;
 }
 
-button, input {
-  font-family: 'Arial', sans-serif;
-}
-
-/* Adicionando um estilo global de fundo */
-body {
-  background-color: #f7f7f7;
-}
+/* Removido a repetição do font-family para 'button' e 'input' */

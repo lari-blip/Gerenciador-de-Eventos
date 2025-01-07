@@ -3,10 +3,16 @@ import styled from 'styled-components';
 export const EventCardContainer = styled.div`
   background-color: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
 
   img {
     width: 100%;
@@ -46,10 +52,11 @@ export const EventCardContainer = styled.div`
         background-color: #284eee;
         color: #ffffff;
         cursor: pointer;
-        transition: background-color 0.3s;
+        transition: background-color 0.3s, transform 0.2s;
 
         &:hover {
           background-color: #1e3eb5;
+          transform: scale(1.05);
         }
 
         &:nth-child(3) {
@@ -63,6 +70,14 @@ export const EventCardContainer = styled.div`
   }
 `;
 
+export const EventList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+`;
+
 export const Button = styled.button`
   padding: 10px 20px;
   font-size: 14px;
@@ -72,10 +87,10 @@ export const Button = styled.button`
   background-color: ${(props) => (props.secondary ? '#ffffff' : '#284eee')};
   color: ${(props) => (props.secondary ? '#284eee' : '#ffffff')};
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 
   &:hover {
     background-color: ${(props) => (props.secondary ? '#e0e7ff' : '#1e3eb5')};
+    transform: scale(1.05);
   }
 `;
-
