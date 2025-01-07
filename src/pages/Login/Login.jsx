@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -21,7 +20,7 @@ const Login = ({ onLogin }) => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [gravarSenha, setGravarSenha] = useState(false);
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
 
   useEffect(() => {
     const savedEmail = localStorage.getItem('email');
@@ -40,15 +39,15 @@ const Login = ({ onLogin }) => {
     setErrorMessage('');
     setLoading(true);
     setTimeout(() => {
-      const isValidUser = email === 'admin@admin.com' && senha === '123';
+      const isValidUser = email === 'admin@gmail.com' && senha === '123';
       setLoading(false);
       if (isValidUser) {
         if (gravarSenha) {
           localStorage.setItem('email', email);
           localStorage.setItem('senha', senha);
         }
-        onLogin();  
-        navigate('/home');  
+        onLogin();
+        navigate('/home');
       } else {
         setErrorMessage('Credenciais inválidas. Tente novamente.');
       }
@@ -56,24 +55,26 @@ const Login = ({ onLogin }) => {
   };
 
   const handleRegister = () => {
-    navigate('/cadastro');  
+    navigate('/cadastro');
   };
 
   return (
     <Container>
       <FormWrapper>
-        <Title>Faça seu login</Title>
+        <Title>Bem-vindo de volta!</Title>
         <Input
           type="email"
           placeholder="E-mail"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          isError={!!errorMessage}
         />
         <Input
           type="password"
           placeholder="Senha"
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
+          isError={!!errorMessage}
         />
         {errorMessage && <Message error>{errorMessage}</Message>}
         <div>
@@ -93,7 +94,7 @@ const Login = ({ onLogin }) => {
       </FormWrapper>
       <ImageWrapper>
         <Illustration src="https://i.imgur.com/Sa0WeIb.png" alt="Login Illustration" />
-        <InfoText>A melhor experiência de login que você já teve na sua vida.</InfoText>
+        <InfoText>Acesse sua conta e tenha a melhor experiência.</InfoText>
       </ImageWrapper>
     </Container>
   );
