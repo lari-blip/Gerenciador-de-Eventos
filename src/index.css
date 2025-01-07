@@ -1,0 +1,42 @@
+/* Resetando alguns estilos padrões do navegador */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1, h2 {
+  color: #333;
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button, input {
+  font-family: 'Arial', sans-serif;
+}
+
+/* Adicionando um estilo global de fundo */
+body {
+  background-color: #f7f7f7;
+}
