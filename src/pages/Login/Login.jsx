@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';  // Importando ícones de olho
+import { FaEye, FaEyeSlash } from 'react-icons/fa';  
 import {
   Container,
   FormWrapper,
@@ -23,7 +23,7 @@ const Login = ({ onLogin }) => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [gravarSenha, setGravarSenha] = useState(false);
-  const [mostrarSenha, setMostrarSenha] = useState(false); // Estado para controlar a visibilidade da senha
+  const [mostrarSenha, setMostrarSenha] = useState(false); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -52,17 +52,19 @@ const Login = ({ onLogin }) => {
       setLoading(false);
 
       const { token } = response.data;
-      if (gravarSenha) {
-        localStorage.setItem('email', email);
-        localStorage.setItem('senha', senha);
-      }
-      localStorage.setItem('token', token);
+      if (token) {
+        localStorage.setItem('token', token); 
 
-      onLogin();
-      navigate('/home');
+        if (gravarSenha) {
+          localStorage.setItem('email', email);
+          localStorage.setItem('senha', senha);
+        }
+
+        onLogin();
+        navigate('/home'); 
+      }
     } catch (error) {
       setLoading(false);
-      console.error("Erro no login", error);
       setErrorMessage('Credenciais inválidas. Tente novamente.');
     }
   };
@@ -84,7 +86,7 @@ const Login = ({ onLogin }) => {
         />
         <div style={{ position: 'relative' }}>
           <Input
-            type={mostrarSenha ? 'text' : 'password'}  // Controlando tipo da senha
+            type={mostrarSenha ? 'text' : 'password'}  
             placeholder="Senha"
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
@@ -98,7 +100,7 @@ const Login = ({ onLogin }) => {
               transform: 'translateY(-50%)',
               cursor: 'pointer',
             }}
-            onClick={() => setMostrarSenha(!mostrarSenha)}  // Alterando a visibilidade
+            onClick={() => setMostrarSenha(!mostrarSenha)}  
           >
             {mostrarSenha ? <FaEyeSlash /> : <FaEye />}
           </span>

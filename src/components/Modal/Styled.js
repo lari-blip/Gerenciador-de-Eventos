@@ -1,5 +1,23 @@
 import styled from 'styled-components';
 
+export const FileUploadContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+`;
+
+export const FileUploadIcon = styled.div`
+  font-size: 2rem;
+  color: #4a90e2;
+  cursor: pointer;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
 export const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -14,25 +32,28 @@ export const ModalOverlay = styled.div`
 `;
 
 export const ModalContainer = styled.div`
-  width: 400px;
+  width: 420px;
+  max-height: 80vh; /* Limita a altura máxima do modal */
   background-color: #ffffff;
   border-radius: 12px;
   padding: 30px 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 15px; 
+  gap: 20px;
+  overflow-y: auto; /* Permite rolagem quando necessário */
 `;
 
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
-  
+
   h2 {
     font-size: 24px;
     font-weight: bold;
     color: #7f56d9;  
     margin-bottom: 20px;
+    text-align: center;
   }
 
   div {
@@ -97,3 +118,4 @@ export const Button = styled.button`
     transform: scale(0.98);
   }
 `;
+

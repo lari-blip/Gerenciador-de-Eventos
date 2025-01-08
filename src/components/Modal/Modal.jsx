@@ -8,6 +8,7 @@ import {
   Label,
   Select,
 } from './Styled';
+import { FiUpload } from 'react-icons/fi';
 
 const estados = [
   { nome: 'São Paulo', cidades: ['São Paulo', 'Campinas', 'Santos'] },
@@ -20,23 +21,24 @@ const Modal = ({ isOpen, onClose, onSave, eventData, setEventData }) => {
 
   const [selectedEstado, setSelectedEstado] = useState('');
   const [selectedCidade, setSelectedCidade] = useState('');
-  const [imageError, setImageError] = useState(''); // Armazena erros de validação da imagem
+  const [imageError, setImageError] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEventData({ ...eventData, [name]: value });
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setEventData({ ...eventData, image: URL.createObjectURL(file) });
+      setImageError('');
+    }
+  };
+
   const handleSave = () => {
     if (!eventData.name || !eventData.date || !eventData.location || !eventData.image) {
       alert('Por favor, preencha todos os campos.');
-      return;
-    }
-
-    // Validação da URL da imagem
-    const isValidImage = /\.(jpeg|jpg|png)$/i.test(eventData.image);
-    if (!isValidImage) {
-      setImageError('A URL da imagem deve ser válida e terminar com .jpeg , .png ou .jpg.');
       return;
     }
 
@@ -49,13 +51,13 @@ const Modal = ({ isOpen, onClose, onSave, eventData, setEventData }) => {
     const estadoSelecionado = e.target.value;
     setSelectedEstado(estadoSelecionado);
     setSelectedCidade('');
-    setEventData({ ...eventData, location: estadoSelecionado + ', ' + selectedCidade });
+    setEventData({ ...eventData, location: estadoSelecionado });
   };
 
   const handleCidadeChange = (e) => {
     const cidadeSelecionada = e.target.value;
     setSelectedCidade(cidadeSelecionada);
-    setEventData({ ...eventData, location: selectedEstado + ', ' + cidadeSelecionada });
+    setEventData({ ...eventData, location: `${selectedEstado}, ${cidadeSelecionada}` });
   };
 
   return (
@@ -107,7 +109,22 @@ const Modal = ({ isOpen, onClose, onSave, eventData, setEventData }) => {
             </>
           )}
 
-          <Label>URL da Imagem</Label>
+          <Label>Imagem do Evento</Label>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
+            <label htmlFor="image-upload" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '2px dashed #ccc', borderRadius: '8px', padding: '10px', width: '50px', height: '50px' }}>
+              <FiUpload size={24} color="#888" />
+            </label>
+            <Input
+              type="file"
+              id="image-upload"
+              style={{ display: 'none' }}
+              onChange={handleImageChange}
+
+              
+            />
+          </div>
+          {eventData.image && <img src={eventData.image} alt="Preview" style={{ width: '100%', maxHeight: '150px', borderRadius: '8px', objectFit: 'cover' }} />}
+          
           <Input
             type="text"
             name="image"

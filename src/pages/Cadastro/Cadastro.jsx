@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
+import axios from 'axios';
 import {
   Container,
   FormWrapper,
@@ -21,10 +22,9 @@ const Cadastro = () => {
   const [confirmSenha, setConfirmSenha] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-
   const navigate = useNavigate();
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
     if (!email || !senha || !confirmSenha) {
       setErrorMessage('Por favor, preencha todos os campos.');
       return;
@@ -35,10 +35,26 @@ const Cadastro = () => {
     }
     setErrorMessage('');
     setLoading(true);
-    setTimeout(() => {
+
+    try {
+      const response = await axios.post('http://localhost:3000/cadastro', {
+        nome: 'Administrador',  
+        email: email,
+        senha: senha,
+      });
+
+      if (response.status === 201) {
+        setLoading(false);
+        navigate('/login');  
+      }
+    } catch (error) {
       setLoading(false);
-      navigate('/login');
-    }, 1500);
+      if (error.response) {
+        setErrorMessage(error.response.data); 
+      } else {
+        setErrorMessage('Erro ao cadastrar. Tente novamente.');
+      }
+    }
   };
 
   return (
