@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
-import {
-  ModalContainer,
-  ModalContent,
-  ModalOverlay,
-  Button,
-  Input,
-  Label,
-  Select,
-} from './Styled';
+import { ModalContainer, ModalContent, ModalOverlay, Button, Input, Label, Select } from './Styled';
 import { FiUpload } from 'react-icons/fi';
+import axios from 'axios';  // Importando axios para fazer requisições
 
 const estados = [
   { nome: 'São Paulo', cidades: ['São Paulo', 'Campinas', 'Santos'] },
@@ -36,15 +29,30 @@ const Modal = ({ isOpen, onClose, onSave, eventData, setEventData }) => {
     }
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!eventData.name || !eventData.date || !eventData.location || !eventData.image) {
       alert('Por favor, preencha todos os campos.');
       return;
     }
 
-    setImageError('');
-    onSave();
-    onClose();
+    try {
+      const adminId = 1; // O adminId deve vir do seu sistema de autenticação (por exemplo, após login)
+      
+      const response = await axios.post('http://localhost:3000/eventos', {
+        nome_evento: eventData.name,
+        data_evento: eventData.date,
+        localizacao: eventData.location,
+        imagem: eventData.image,
+        adminId: adminId,
+      });
+
+      console.log('Evento cadastrado com sucesso:', response.data);
+      onSave();  // Chama a função de sucesso para fechar o modal ou atualizar o estado
+      onClose();
+    } catch (error) {
+      console.error('Erro ao cadastrar o evento:', error);
+      alert('Ocorreu um erro ao cadastrar o evento. Tente novamente.');
+    }
   };
 
   const handleEstadoChange = (e) => {
@@ -119,8 +127,6 @@ const Modal = ({ isOpen, onClose, onSave, eventData, setEventData }) => {
               id="image-upload"
               style={{ display: 'none' }}
               onChange={handleImageChange}
-
-              
             />
           </div>
           {eventData.image && <img src={eventData.image} alt="Preview" style={{ width: '100%', maxHeight: '150px', borderRadius: '8px', objectFit: 'cover' }} />}
