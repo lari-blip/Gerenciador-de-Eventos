@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';  // Importando o axios
 import {
   Container,
   FormWrapper,
@@ -32,27 +33,36 @@ const Login = ({ onLogin }) => {
     }
   }, []);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!email || !senha) {
       setErrorMessage('Por favor, preencha todos os campos.');
       return;
     }
     setErrorMessage('');
     setLoading(true);
-    setTimeout(() => {
-      const isValidUser = email === 'admin@gmail.com' && senha === '123';
+
+    try {
+      const response = await axios.post('http://localhost:3000/login', {
+        email,
+        password: senha,
+      });
+
       setLoading(false);
-      if (isValidUser) {
-        if (gravarSenha) {
-          localStorage.setItem('email', email);
-          localStorage.setItem('senha', senha);
-        }
-        onLogin();
-        navigate('/home');
-      } else {
-        setErrorMessage('Credenciais inválidas. Tente novamente.');
+
+      const { token } = response.data;
+      if (gravarSenha) {
+        localStorage.setItem('email', email);
+        localStorage.setItem('senha', senha);
       }
-    }, 1500);
+      localStorage.setItem('token', token); 
+
+      onLogin(); 
+      navigate('/home'); 
+    } catch (error) {
+      setLoading(false);
+      console.error("Erro no login", error);
+      setErrorMessage('Credenciais inválidas. Tente novamente.');
+    }
   };
 
   const handleRegister = () => {
