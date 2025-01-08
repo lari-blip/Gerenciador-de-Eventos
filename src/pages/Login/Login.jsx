@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';  // Importando o axios
+import axios from 'axios';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';  // Importando ícones de olho
 import {
   Container,
   FormWrapper,
@@ -22,6 +23,7 @@ const Login = ({ onLogin }) => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [gravarSenha, setGravarSenha] = useState(false);
+  const [mostrarSenha, setMostrarSenha] = useState(false); // Estado para controlar a visibilidade da senha
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -54,10 +56,10 @@ const Login = ({ onLogin }) => {
         localStorage.setItem('email', email);
         localStorage.setItem('senha', senha);
       }
-      localStorage.setItem('token', token); 
+      localStorage.setItem('token', token);
 
-      onLogin(); 
-      navigate('/home'); 
+      onLogin();
+      navigate('/home');
     } catch (error) {
       setLoading(false);
       console.error("Erro no login", error);
@@ -80,13 +82,27 @@ const Login = ({ onLogin }) => {
           onChange={(e) => setEmail(e.target.value)}
           isError={!!errorMessage}
         />
-        <Input
-          type="password"
-          placeholder="Senha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-          isError={!!errorMessage}
-        />
+        <div style={{ position: 'relative' }}>
+          <Input
+            type={mostrarSenha ? 'text' : 'password'}  // Controlando tipo da senha
+            placeholder="Senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            isError={!!errorMessage}
+          />
+          <span
+            style={{
+              position: 'absolute',
+              right: '10px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              cursor: 'pointer',
+            }}
+            onClick={() => setMostrarSenha(!mostrarSenha)}  // Alterando a visibilidade
+          >
+            {mostrarSenha ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        </div>
         {errorMessage && <Message error>{errorMessage}</Message>}
         <div>
           <Checkbox

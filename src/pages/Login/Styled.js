@@ -40,7 +40,7 @@ export const Input = styled.input`
   transition: border-color 0.3s;
 
   &:focus {
-    border-color: ${(props) => (props.isError ? 'red' : '#7f56d9')};
+    border-color: ${(props) => (props.isError ? 'red' : '#7f56d9')}; /* Roxo */
   }
 `;
 
@@ -125,4 +125,19 @@ export const InfoText = styled.p`
   line-height: 1.5;
   max-width: 80%;
   margin: 0 auto;
+`;
+
+
+export const EyeIconWrapper = styled.span`
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #7f56d9; 
+  font-size: 20px;
+
+  &:hover {
+    color: #6c46b1; 
+  }
 `;
