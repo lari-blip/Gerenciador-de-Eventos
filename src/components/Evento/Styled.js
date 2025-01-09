@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const EventCardContainer = styled.div`
-  width: 300px; 
+  width: 320px; 
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
@@ -9,6 +9,7 @@ export const EventCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 
   &:hover {
     transform: translateY(-10px);
@@ -19,6 +20,7 @@ export const EventCardContainer = styled.div`
     width: 100%;
     height: 180px;
     overflow: hidden;
+    border-radius: 12px 12px 0 0;
 
     img {
       width: 100%;
@@ -31,7 +33,7 @@ export const EventCardContainer = styled.div`
     padding: 15px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 
     h3 {
       font-size: 18px;
@@ -45,10 +47,10 @@ export const EventCardContainer = styled.div`
       margin: 0;
     }
 
-    .buttons {
+    .edit-buttons {
       display: flex;
+      flex-direction: column;
       gap: 10px;
-      margin-top: 10px;
 
       button {
         padding: 8px 12px;
@@ -71,6 +73,29 @@ export const EventCardContainer = styled.div`
           &:hover {
             background-color: #e03030;
           }
+        }
+      }
+    }
+
+    .input-edit {
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+      margin-top: 10px;
+
+      input {
+        padding: 8px 12px;
+        font-size: 14px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        width: 100%;
+        background-color: #f7f7f7;
+        color: #555;
+        transition: border-color 0.3s;
+
+        &:focus {
+          border-color: #284eee;
+          background-color: #ffffff;
         }
       }
     }
@@ -99,5 +124,13 @@ export const Button = styled.button`
   &:hover {
     background-color: ${(props) => (props.secondary ? '#e0e7ff' : '#1e3eb5')};
     transform: scale(1.05);
+  }
+`;
+
+export const DeleteButton = styled(Button)`
+  background-color: #ff4d4f;
+  color: #ffffff;
+  &:hover {
+    background-color: #e03030;
   }
 `;

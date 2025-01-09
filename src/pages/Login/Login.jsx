@@ -102,7 +102,7 @@ const Login = ({ onLogin }) => {
             }}
             onClick={() => setMostrarSenha(!mostrarSenha)}  
           >
-            {mostrarSenha ? <FaEyeSlash /> : <FaEye />}
+            
           </span>
         </div>
         {errorMessage && <Message error>{errorMessage}</Message>}
