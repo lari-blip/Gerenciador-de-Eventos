@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';  
 import {
   Container,
   FormWrapper,
@@ -76,7 +75,7 @@ const Login = ({ onLogin }) => {
   return (
     <Container>
       <FormWrapper>
-        <Title>Bem-vindo de volta!</Title>
+        <Title>Bem-vindo ao Gerenciador De eventos!</Title>
         <Input
           type="email"
           placeholder="E-mail"
@@ -123,9 +122,10 @@ const Login = ({ onLogin }) => {
       </FormWrapper>
       <ImageWrapper>
         <InfoWrapper>
-          <InfoText>Acesse sua conta e aproveite o melhor conteúdo.</InfoText>
+          <InfoText>Gerencie seus eventos de maneira fácil e rápida, com total controle e praticidade.</InfoText>
         </InfoWrapper>
         <Illustration src="https://i.imgur.com/Sa0WeIb.png" alt="Login Illustration" />
+        
       </ImageWrapper>
     </Container>
   );
