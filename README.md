@@ -38,7 +38,7 @@
 
 ###
 
-<p align="left">Pré-requisitos:<br>Node.js instalado na máquina.<br>Visual Studio instalado na máquina:<br><br>Clone este repositório:<br><br>git clone https:https://github.com/lari-blip/Gerenciador_de_Eventos_Web.git<br><br>npm install<br>Inicie o servidor local:<br><br>npm run dev</p>
+<p align="left">Pré-requisitos:<br>Node.js instalado na máquina.<br>Visual Studio instalado na máquina:<br><br>Clone este repositório:<br><br>git clone https:https://github.com/lari-blip/Gerenciador_de_Eventos_Web.git<br><br>npm install<br>Inicie o servidor local:<br><br>npm run dev<br><br>Observação: Para executar esta aplicação web, é necessário clonar também o repositório do backend. Você pode acessar o repositório do backend no seguinte link: https://github.com/lari-blip/Gerenciador_Eventos_BackEnd.git</p>
 
 ###
 
