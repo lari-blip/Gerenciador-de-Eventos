@@ -37,7 +37,7 @@ export const EventCardContainer = styled.div`
 
     h3 {
       font-size: 18px;
-      color: #284eee;
+      color: #7f56d9;
       margin: 0;
     }
 
@@ -58,13 +58,13 @@ export const EventCardContainer = styled.div`
         font-weight: bold;
         border-radius: 8px;
         border: none;
-        background-color: #284eee;
+        background-color: #7f56d9;
         color: #ffffff;
         cursor: pointer;
         transition: background-color 0.3s, transform 0.2s;
 
         &:hover {
-          background-color: #1e3eb5;
+          background-color: #7f56d9;
           transform: scale(1.05);
         }
 
@@ -94,7 +94,7 @@ export const EventCardContainer = styled.div`
         transition: border-color 0.3s;
 
         &:focus {
-          border-color: #284eee;
+          border-color: #7f56d9;
           background-color: #ffffff;
         }
       }
@@ -115,14 +115,14 @@ export const Button = styled.button`
   font-size: 14px;
   font-weight: bold;
   border-radius: 8px;
-  border: ${(props) => (props.secondary ? '2px solid #284eee' : 'none')};
-  background-color: ${(props) => (props.secondary ? '#ffffff' : '#284eee')};
-  color: ${(props) => (props.secondary ? '#284eee' : '#ffffff')};
+  border: ${(props) => (props.secondary ? '2px solid #7f56d9' : 'none')};
+  background-color: ${(props) => (props.secondary ? '#ffffff' : '#7f56d9')};
+  color: ${(props) => (props.secondary ? '#7f56d9' : '#ffffff')};
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
 
   &:hover {
-    background-color: ${(props) => (props.secondary ? '#e0e7ff' : '#1e3eb5')};
+    background-color: ${(props) => (props.secondary ? '#e0e7ff' : '##6f41d2')};
     transform: scale(1.05);
   }
 `;
